@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Post details</title>
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="/">Twiteer</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="pelicula.phpnavbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+            </div>
+        </div>
+    </nav>
+
+
+</header>
+<body>
+
+
+    <div class="card card-post">
+        <h5 class="card-header"> <%= post.name %></h5>
+        <div class="card-body">
+          <p class="card-text"><%= post.postContent %></p>
+        </div>
+      </div>
+
+
+
+    <form class="form-post" action="/Comments/create" method="POST">
+            <h4>Add Comment</h4>
+
+        <input type="hidden" name="postId" value="<%= post.id %>">
+       
+
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" class="form-control" id="username" name="username">
+        </div>
+
+        <div class="form-group">
+            <label for="commentContent">Comment:</label>
+            <input type="text" class="form-control" id="commentContent" name="commentContent">
+        </div>
+        <button type="submit" class="btn btn-primary">Add Comment</button>
+
+
+
+    </form>
+
+  
+            <h3 class="title-comment">Comments</h3>
+
+    <% Comments.forEach((Comment)=> { %>
+
+    <div class="card card-comment w-75">
+        <div class="card-body">
+          <h5 class="card-title"><%= Comment.username %></h5>
+          <p class="card-text"><%= Comment.commentContent %></p>
+          
+        </div>
+      </div>
+        <hr>
+        <% }); %>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+</body>
+
+</html>
